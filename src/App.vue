@@ -2,7 +2,8 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Todos v-bind:lists="todos"/>
+    <Todos v-bind:lists="todos" v-on:delete-todo="deleteTodo" />
+    <!-- catch the emited event and call a function to delete the todo item -->
   </div>
 </template>
 
@@ -31,11 +32,16 @@ export default {
           completed: true
         },
         {
-          id: 1,
+          id: 3,
           title: 'Todo Three',
           completed: false
         },
       ]
+    }
+  },
+  methods: {
+    deleteTodo(id) {
+      this.todos = this.todos.filter( todo => todo.id !== id)
     }
   }
 }

@@ -4,6 +4,9 @@
         <!-- v-on directives is for events eg v-on:click -->
         <!-- we are looking at a change event and the ncalling markComplete -->
         <p>{{todo.title}}</p>
+        <button @click="$emit('delete-todo', todo.id)" class="del">x</button>
+        <!-- @click is a click handler. could also have used v-on:click -->
+        <!-- $emit, emits an event with a name 'delete-todo' and with a parameter-> id of the item we are deleting -->
     </div>
 </template>
 

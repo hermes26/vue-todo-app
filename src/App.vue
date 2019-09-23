@@ -51,7 +51,13 @@ export default {
   },
   methods: {
     deleteTodo(id) {
-      this.todos = this.todos.filter( todo => todo.id !== id)
+      //makes a delete request to the server, we get a response back and then we delete that todo with id from the UI
+      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(res => this.todos = this.todos.filter( todo => todo.id !== id))
+        .catch(err => console.log(err));
+
+
+
     },
     addTodo(newTodo){
       const { title, completed } = newTodo;

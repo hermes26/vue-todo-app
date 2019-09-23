@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
     <Todos v-bind:lists="todos" v-on:delete-todo="deleteTodo" />
     <!-- catch the emited event and call a function to delete the todo item -->
   </div>
@@ -10,6 +11,8 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Todos from './components/Todos.vue'
+import Header from './components/layouts/Header'
+
 
 
 export default {
@@ -17,6 +20,7 @@ export default {
   components: {
     HelloWorld,
     Todos,
+    Header,
   },
   data(){
     return {

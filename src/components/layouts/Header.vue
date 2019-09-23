@@ -7,10 +7,15 @@
 
 <script>
 export default {
-    name: 'Header'
+    name: "Header"
 }
 </script>
 
 <style scoped>
-
+    .header{
+        background: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
 </style>

@@ -54,12 +54,22 @@ export default {
       this.todos = this.todos.filter( todo => todo.id !== id)
     },
     addTodo(newTodo){
-      this.todos = [...this.todos, newTodo];
+      const { title, completed } = newTodo;
+      //when we make a post request to jsonplaceholder with a new todo, it gives you back that todo, along with
+      // the new id that id creates for you. jsonplaceholder mimics a backend api.
+      axios.post('https://jsonplaceholder.typicode.com/todos', {
+        title,
+        completed
+      })
+        .then(res => this.todos = [...this.todos, res.data])
+        .catch(err => console.log(err));
+
+
     }
   },
   created(){ // a method that will run right away on start
     // JSONPlaceholder is a free online REST API that you can use whenever you need some fake data.
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5') //this would be some kind of backend api that ive built, eg node and express server
       .then(res => this.todos = res.data)
       .catch(err => console.log(err));
 

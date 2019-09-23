@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import uuid from 'uuid';
+// this was before we used axios and jsonplaceholder to get fake data and hence ids
+// import uuid from 'uuid';
 
 export default {
     name: "AddTodo",
@@ -22,7 +23,7 @@ export default {
         addTodo(e){
             e.preventDefault();
             const newTodo = {
-                id: uuid.v4(),
+                // id: uuid.v4(),
                 title: this.title,
                 completed: false
             }

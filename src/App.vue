@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to the Vue.js To Do App"/>
     <Header />
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AddTodo v-on:add-todo="addTodo"/>
     <Todos v-bind:lists="todos" v-on:delete-todo="deleteTodo" />
     <!-- catch the emited event and call a function to delete the todo item -->
   </div>
@@ -12,6 +13,8 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Todos from './components/Todos.vue'
 import Header from './components/layouts/Header'
+import AddTodo from './components/AddTodo'
+
 
 
 
@@ -21,6 +24,7 @@ export default {
     HelloWorld,
     Todos,
     Header,
+    AddTodo,
   },
   data(){
     return {
@@ -46,6 +50,9 @@ export default {
   methods: {
     deleteTodo(id) {
       this.todos = this.todos.filter( todo => todo.id !== id)
+    },
+    addTodo(newTodo){
+      this.todos = [...this.todos, newTodo];
     }
   }
 }
